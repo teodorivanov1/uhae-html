@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- TODO: Title — set dynamically from product.name -->
+  <title>UHAE – Дневен крем Роза &amp; Невен</title>
+
+  <!-- External libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Site stylesheet -->
+  <link rel="stylesheet" href="uhae.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     TOP HEADER (shared across all pages)
+══════════════════════════════════════════════════════ -->
+<header id="top-header">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between py-2">
+
+      <!-- Brand -->
+      <div>
+        <a href="uhae-template.html" class="brand-name d-block">UHAE</a>
+        <span class="brand-tagline">ръчно направена козметика</span>
+      </div>
+
+      <!-- Search bar -->
+      <div class="d-none d-md-flex flex-grow-1 mx-4" style="max-width:380px">
+        <div class="input-group input-group-sm">
+          <!-- TODO: Search — wire to product search API -->
+          <input type="text"
+                 class="form-control border-0 border-bottom rounded-0"
+                 style="background:transparent; font-size:0.82rem; letter-spacing:0.05em;"
+                 placeholder="Търси продукт…"/>
+          <button class="btn btn-link px-2" style="color:var(--warm-mid)">
+            <i class="bi bi-search" style="font-size:0.85rem"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Icons + language switcher -->
+      <div class="header-icons d-flex align-items-center">
+        <!-- TODO: Language — wire to real i18n / locale switching logic -->
+        <div class="lang-switcher d-none d-md-flex align-items-center me-2">
+          <button class="lang-btn active" onclick="setLang('bg', this)">🇧🇬 BG</button>
+          <span class="lang-sep mx-1">|</span>
+          <button class="lang-btn" onclick="setLang('en', this)">🇬🇧 EN</button>
+        </div>
+        <!-- TODO: Profile / Wishlist / Cart — replace # with real URLs -->
+        <a href="#" title="Профил"><i class="bi bi-person"></i></a>
+        <a href="#" title="Любими"><i class="bi bi-heart"></i></a>
+        <a href="#" title="Количка" class="cart-badge">
+          <i class="bi bi-bag"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════
+     MAIN NAVIGATION
+     TODO: Nav — generate from CMS/config; mark active page
+══════════════════════════════════════════════════════ -->
+<nav id="main-nav" class="navbar navbar-expand-lg">
+  <div class="container">
+    <button class="navbar-toggler py-1" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="uhae-template.html">Начало</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Нашата история</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Козметиката ни</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Съставки</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Контакти</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PRODUCT DETAIL PAGE
+══════════════════════════════════════════════════════ -->
+<section id="product-page">
+  <div class="container">
+
+    <!-- TODO: Breadcrumb — generate from product.category chain + product.name -->
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="uhae-template.html">Начало</a></li>
+        <li class="breadcrumb-item"><a href="uhae-template.html">Кремове</a></li>
+        <li class="breadcrumb-item active">Дневен крем Роза &amp; Невен</li>
+      </ol>
+    </nav>
+
+    <div class="row g-5">
+
+
+      <!-- ════════════════════════════════════════════
+           LEFT COLUMN — GALLERY
+      ════════════════════════════════════════════ -->
+      <div class="col-12 col-lg-5">
+        <div class="gallery-wrap">
+
+          <!-- TODO: Main image — src from product.images[0].src (medium resolution)
+               The JS in uhae-product.js swaps src on thumbnail click.
+               Clicking the main image opens the lightbox with the same src. -->
+          <img
+            id="mainImg"
+            class="img-main"
+            src="https://placehold.co/600x600/ede8df/a07850?text=Крем+Роза"
+            alt="Дневен крем Роза и Невен"
+            title="Клик за уголемяване"
+          />
+
+          <!-- TODO: Thumbnails — repeat .thumb-item for each image in product.images[].
+               Pass the medium-res src to switchImg() as the second argument.
+               For production use the full-res (lightbox) src there instead. -->
+          <div class="thumb-row">
+            <div class="thumb-item active"
+                 onclick="switchImg(this, 'https://placehold.co/600x600/ede8df/a07850?text=Крем+Роза')">
+              <img src="https://placehold.co/160x160/ede8df/a07850?text=1" alt="Изглед 1"/>
+            </div>
+            <div class="thumb-item"
+                 onclick="switchImg(this, 'https://placehold.co/600x600/ddd5c8/6b5e52?text=Текстура')">
+              <img src="https://placehold.co/160x160/ddd5c8/6b5e52?text=2" alt="Текстура"/>
+            </div>
+            <div class="thumb-item"
+                 onclick="switchImg(this, 'https://placehold.co/600x600/f8f4ee/a07850?text=Съставки')">
+              <img src="https://placehold.co/160x160/f8f4ee/a07850?text=3" alt="Съставки"/>
+            </div>
+            <div class="thumb-item"
+                 onclick="switchImg(this, 'https://placehold.co/600x600/c4a882/fdfaf6?text=Детайл')">
+              <img src="https://placehold.co/160x160/c4a882/fdfaf6?text=4" alt="Детайл"/>
+            </div>
+          </div>
+
+          <p class="text-center mt-2" style="font-size:0.72rem; letter-spacing:0.12em; color:var(--ivory-dark);">
+            <i class="bi bi-zoom-in me-1"></i>КЛИК ВЪРХУ СНИМКАТА ЗА УГОЛЕМЯВАНЕ
+          </p>
+
+        </div>
+      </div><!-- /gallery column -->
+
+
+      <!-- ════════════════════════════════════════════
+           RIGHT COLUMN — PRODUCT INFO
+      ════════════════════════════════════════════ -->
+      <div class="col-12 col-lg-7">
+
+        <!-- TODO: Title — from product.name -->
+        <h1 class="product-title">Дневен крем</h1>
+        <!-- TODO: Subtitle — from product.subtitle -->
+        <p class="product-subtitle">Роза &amp; Невен</p>
+
+        <!-- TODO: Price — format product.price as "X лв."; render <del> if product.oldPrice exists -->
+        <div class="mt-2 mb-0">
+          <div class="product-price-main">22 лв.</div>
+        </div>
+
+        <hr class="divider-thin"/>
+
+        <!-- TODO: Short description — from product.shortDescription -->
+        <p style="max-width:480px; color:var(--warm-mid); font-size:0.9rem;">
+          Нежен дневен крем с масло от дива роза и екстракт от невен. Хидратира дълбоко,
+          успокоява раздразнена кожа и оставя копринено усещане. Подходящ за суха и
+          чувствителна кожа.
+        </p>
+
+        <!-- Quantity + Add to cart -->
+        <div class="d-flex align-items-center gap-3 flex-wrap mt-3">
+          <div class="qty-control">
+            <button onclick="changeQty(-1)">−</button>
+            <input type="number" id="qtyInput" value="1" min="1" max="99"/>
+            <button onclick="changeQty(1)">+</button>
+          </div>
+          <!-- TODO: addToCart — call real cart API with product.id + quantity -->
+          <button class="btn-cart" onclick="addToCart(this)">
+            <i class="bi bi-bag-plus me-1"></i> Искам го
+          </button>
+          <!-- TODO: Wishlist — toggle and persist to user account or localStorage -->
+          <button class="btn-wishlist" title="Добави в любими">
+            <i class="bi bi-heart"></i>
+          </button>
+        </div>
+
+        <!-- TODO: Tags — generate from product.tags[]
+             Each tag: { label, slug } — href should link to filtered listing page -->
+        <div class="tags-wrap mt-3">
+          <a href="#" class="tag">Кремове</a>
+          <a href="#" class="tag">Суха кожа</a>
+          <a href="#" class="tag">Чувствителна кожа</a>
+          <a href="#" class="tag">Роза</a>
+          <a href="#" class="tag">Невен</a>
+          <a href="#" class="tag">Хидратация</a>
+          <a href="#" class="tag">Антиейдж</a>
+          <a href="#" class="tag">Шеа</a>
+          <a href="#" class="tag">Хиалуронова киселина</a>
+          <a href="#" class="tag">Дневна грижа</a>
+          <a href="#" class="tag">Натурална козметика</a>
+          <a href="#" class="tag">Без парабени</a>
+          <a href="#" class="tag">Веган</a>
+          <a href="#" class="tag">Алое Вера</a>
+          <a href="#" class="tag">Витамин E</a>
+          <a href="#" class="tag">Регенерация</a>
+          <a href="#" class="tag">Подаръчна идея</a>
+        </div>
+
+        <!-- TODO: Info pills — generate from product.attributes[]
+             Each attribute: { icon, label }
+             Shown when product.attribute value is true / present -->
+        <div class="info-pills mt-3">
+          <span class="info-pill"><i class="bi bi-leaf"></i> 100% Натурално</span>
+          <span class="info-pill"><i class="bi bi-hand-thumbs-up"></i> Ръчно изработено</span>
+          <span class="info-pill"><i class="bi bi-shield-check"></i> Без парабени</span>
+          <span class="info-pill"><i class="bi bi-heart"></i> Не тестван на животни</span>
+          <span class="info-pill"><i class="bi bi-droplet"></i> Без синтетични аромати</span>
+        </div>
+
+
+        <!-- ══════════════════════════════════════════
+             PRODUCT TABS
+        ══════════════════════════════════════════ -->
+        <ul class="nav product-tabs mt-4" id="productTabs">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabDesc">Описание</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabIngredients">Състав</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabHow">Употреба</button>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+
+          <!-- ── TAB: DESCRIPTION ── -->
+          <!-- TODO: Description — from product.description (rich text / HTML from CMS) -->
+          <div class="tab-pane fade show active tab-section" id="tabDesc">
+            <p class="desc-lead">
+              "Природата е създала всичко, от което кожата ти се нуждае —<br>
+              ние просто го събрахме на едно място."
+            </p>
+            <div class="desc-body">
+              <p>
+                Дневният крем <strong>Роза &amp; Невен</strong> е формулиран специално за суха и
+                чувствителна кожа. Маслото от дива роза (<em>Rosa canina</em>) е богато на
+                омега-3 и омега-6 мастни киселини, които възстановяват кожната бариера и
+                подпомагат регенерацията на клетките.
+              </p>
+              <p>
+                Екстрактът от невен (<em>Calendula officinalis</em>) е известен с мощните си
+                противовъзпалителни свойства — успокоява зачервявания, хидратира и предпазва.
+                В комбинация с масло от шеа и хиалуронова киселина, кремът осигурява дългосрочна
+                хидратация и видимо по-мека кожа още след първото нанасяне.
+              </p>
+              <p>
+                Всяка партида е приготвена ръчно в малки количества, за да гарантираме свежест и
+                максимална ефективност на активните съставки.
+              </p>
+            </div>
+          </div>
+
+          <!-- ── TAB: INGREDIENTS (СОСТАВ) ── -->
+          <!-- TODO: Ingredients — generate .ingredient-card from product.ingredients[]
+               Each ingredient: { name, latinName, description }
+               INCI string from product.inci -->
+          <div class="tab-pane fade tab-section" id="tabIngredients">
+            <div class="ingredients-grid">
+
+              <div class="ingredient-card">
+                <p class="ing-name">Масло от дива роза</p>
+                <p class="ing-latin">Rosa canina seed oil</p>
+                <p class="ing-desc">Богато на омега-3 и 6. Регенерира, изглажда фини линии и подобрява тена.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <p class="ing-name">Екстракт от невен</p>
+                <p class="ing-latin">Calendula officinalis flower extract</p>
+                <p class="ing-desc">Успокоява, противовъзпалителен, идеален за чувствителна кожа.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <p class="ing-name">Масло от шеа</p>
+                <p class="ing-latin">Butyrospermum parkii butter</p>
+                <p class="ing-desc">Дълбоко хидратира и омекотява без запушване на порите.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <p class="ing-name">Хиалуронова киселина</p>
+                <p class="ing-latin">Sodium hyaluronate</p>
+                <p class="ing-desc">Задържа влагата в кожата, придава обем и свежест.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <p class="ing-name">Алое Вера</p>
+                <p class="ing-latin">Aloe barbadensis leaf juice</p>
+                <p class="ing-desc">Освежава, хидратира и успокоява след дразнене.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <p class="ing-name">Витамин E</p>
+                <p class="ing-latin">Tocopherol</p>
+                <p class="ing-desc">Антиоксидант, забавя стареенето и предпазва от свободни радикали.</p>
+              </div>
+
+            </div>
+
+            <!-- TODO: INCI — from product.inci (plain string) -->
+            <div class="inci-block mt-3">
+              <strong>Пълен INCI списък</strong>
+              Aqua, Rosa Canina Seed Oil, Butyrospermum Parkii Butter, Aloe Barbadensis Leaf Juice,
+              Calendula Officinalis Flower Extract, Sodium Hyaluronate, Glycerin, Cetyl Alcohol,
+              Glyceryl Stearate, Tocopherol, Xanthan Gum, Sodium Levulinate, Sodium Anisate,
+              Citric Acid.
+            </div>
+          </div>
+
+          <!-- ── TAB: HOW TO USE (УПОТРЕБА) ── -->
+          <!-- TODO: Steps — generate <li> blocks from product.usageSteps[]
+               Each step: { title, description } -->
+          <div class="tab-pane fade tab-section" id="tabHow">
+            <ul class="steps-list">
+              <li>
+                <span class="step-num">01</span>
+                <div class="step-text">
+                  <strong>Почисти лицето</strong>
+                  <span>Нанеси върху чиста, леко влажна кожа сутрин след измиване.</span>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">02</span>
+                <div class="step-text">
+                  <strong>Нанеси малко количество</strong>
+                  <span>Вземи количество с размер на грахово зърно — достатъчно за цяло лице и шия.</span>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">03</span>
+                <div class="step-text">
+                  <strong>Масажирай с нежни движения</strong>
+                  <span>Нанеси с леки кръгови движения от центъра навън. Не търкай.</span>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">04</span>
+                <div class="step-text">
+                  <strong>Изчакай да се усвои</strong>
+                  <span>Остави кожата да абсорбира крема 2–3 минути преди нанасяне на грим.</span>
+                </div>
+              </li>
+              <li>
+                <span class="step-num">05</span>
+                <div class="step-text">
+                  <strong>Съхранение</strong>
+                  <span>Пази на сухо и прохладно място. Срок на годност: 12 месеца след отваряне.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div><!-- /tab-content -->
+
+      </div><!-- /info column -->
+    </div><!-- /row -->
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     RELATED PRODUCTS
+     TODO: Related products — fetch from product.relatedProducts[] API endpoint.
+     Render .col-6 block for each related item (same card structure as listing page).
+     Data shape per item: { id, name, subtitle, description, price, image, url }
+══════════════════════════════════════════════════════ -->
+<section class="related-section">
+  <div class="container">
+    <p class="section-label">Може да ти хареса и</p>
+    <h2 class="section-heading">Свързани продукти</h2>
+
+    <div class="row g-3">
+
+      <!-- [EXAMPLE RELATED 1] -->
+      <div class="col-6 col-md-3">
+        <a href="uhae-product.html" class="product-card h-100">
+          <!-- TODO: Image — from related product image -->
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум" alt="Серум"/>
+          </div>
+          <div class="card-body">
+            <p class="product-name">Хиалуронов серум<br><em>с Алое Вера</em></p>
+            <p class="product-desc">30 мл · Всички типове</p>
+            <span class="product-price">34 лв.</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- [EXAMPLE RELATED 2] -->
+      <div class="col-6 col-md-3">
+        <a href="uhae-product.html" class="product-card h-100">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x400/ede8df/a07850?text=Тоник" alt="Тоник"/>
+          </div>
+          <div class="card-body">
+            <p class="product-name">Розова вода<br><em>Тоник за лице</em></p>
+            <p class="product-desc">100 мл · Смесена кожа</p>
+            <span class="product-price">15 лв.</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- [EXAMPLE RELATED 3] -->
+      <div class="col-6 col-md-3">
+        <a href="uhae-product.html" class="product-card h-100">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x400/ede8df/a07850?text=Масло" alt="Масло"/>
+          </div>
+          <div class="card-body">
+            <p class="product-name">Масло за тяло<br><em>Арган &amp; Жожоба</em></p>
+            <p class="product-desc">100 мл · Всички типове</p>
+            <span class="product-price">19 лв.</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- [EXAMPLE RELATED 4] -->
+      <div class="col-6 col-md-3">
+        <a href="uhae-product.html" class="product-card h-100">
+          <div class="product-img-wrap">
+            <img src="https://placehold.co/400x400/ede8df/a07850?text=Комплект" alt="Комплект"/>
+            <span class="product-badge">Хит</span>
+          </div>
+          <div class="card-body">
+            <p class="product-name">Подаръчен комплект<br><em>Роза &amp; Лавандула</em></p>
+            <p class="product-desc">4 продукта · Лимитиран</p>
+            <span class="product-price">65 лв.</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER (same as listing page)
+     TODO: Footer — generate from CMS/config
+══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-12 col-md-4">
+        <div class="footer-brand mb-1">UHAE</div>
+        <div class="footer-tagline mb-3">ръчно направена козметика</div>
+        <p class="footer-about">
+          Вярваме, че кожата ни заслужава само най-доброто от природата.
+          Всеки продукт е изработен с внимание и любов.
+        </p>
+        <!-- TODO: Social icons — URLs from site config -->
+        <div class="social-icons mt-3">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-pinterest"></i></a>
+          <a href="#"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- TODO: Shop links — generate from product category list -->
+      <div class="col-6 col-md-2">
+        <h6>Магазин</h6>
+        <ul>
+          <li><a href="uhae-template.html">Всички продукти</a></li>
+          <li><a href="#">Кремове</a></li>
+          <li><a href="#">Серуми</a></li>
+          <li><a href="#">Сапуни</a></li>
+          <li><a href="#">Свещи</a></li>
+          <li><a href="#">Комплекти</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <h6>Информация</h6>
+        <ul>
+          <li><a href="#">Нашата история</a></li>
+          <li><a href="#">Козметиката ни</a></li>
+          <li><a href="#">Съставки</a></li>
+          <li><a href="#">Блог</a></li>
+          <li><a href="#">Контакти</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <h6>Помощ</h6>
+        <ul>
+          <li><a href="#">Доставка</a></li>
+          <li><a href="#">Връщане</a></li>
+          <li><a href="#">Поверителност</a></li>
+          <li><a href="#">Условия</a></li>
+        </ul>
+      </div>
+
+      <!-- TODO: Newsletter — wire submit to email marketing API -->
+      <div class="col-6 col-md-2">
+        <h6>Абонамент</h6>
+        <p class="footer-newsletter-note">Получавай новини и специални оферти.</p>
+        <div class="input-group input-group-sm mt-2">
+          <input type="email"
+                 class="form-control rounded-0 border-0 footer-newsletter-input"
+                 placeholder="имейл…"/>
+          <button class="btn btn-sm rounded-0 footer-newsletter-btn">→</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>&copy; 2025 UHAE. Всички права запазени.</span>
+      <span>Направено с ♡ в България</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════════
+     LIGHTBOX OVERLAY (controlled by uhae-product.js)
+══════════════════════════════════════════════════════ -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lightbox-close" onclick="closeLightbox()">
+    <i class="bi bi-x-lg"></i>
+  </button>
+  <!-- TODO: Lightbox image — src is swapped by JS when main image is clicked -->
+  <img id="lightboxImg" src="" alt="Уголемена снимка"/>
+</div>
+
+
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Page scripts -->
+<script src="uhae-product.js"></script>
+
+</body>
+</html>

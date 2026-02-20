@@ -313,6 +313,10 @@ h1, h2, h3, h4, h5 {
   max-width: 420px;
   margin-bottom: 1.5rem;
 }
+.hero-banner .btn-primary-uhae,
+.hero-banner .btn-outline-uhae {
+  white-space: nowrap;
+}
 
 
 /* ════════════════════════════════
@@ -1025,8 +1029,24 @@ footer ul li a:hover { color: var(--accent-lt); }
   .brand-name { font-size: 1.65rem; }
   .product-title { font-size: 1.75rem; }
   .ingredients-grid { grid-template-columns: 1fr 1fr; }
+  
+  /* Keep buttons on one line on tablets and mobile */
+  .btn-primary-uhae,
+  .btn-outline-uhae {
+    font-size: 0.72rem;
+    padding: 0.6rem 1.4rem;
+    letter-spacing: 0.14em;
+  }
 }
 
 @media (max-width: 575.98px) {
   .ingredients-grid { grid-template-columns: 1fr; }
+  
+  /* Keep buttons on one line on mobile */
+  .btn-primary-uhae,
+  .btn-outline-uhae {
+    font-size: 0.7rem;
+    padding: 0.55rem 1.2rem;
+    letter-spacing: 0.12em;
+  }
 }

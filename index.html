@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 
   <!-- Site stylesheet -->
-  <link rel="stylesheet" href="uhae.css"/>
+  <link rel="stylesheet" href="css/uhae.css"/>
 </head>
 <body>
 
@@ -92,6 +92,9 @@
      PAGE BODY — SIDEBAR + CONTENT
 ══════════════════════════════════════════════════════ -->
 <div id="page-body">
+  <!-- Sidebar overlay for mobile -->
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+  
   <div class="container-fluid px-0">
     <div class="row g-0">
 
@@ -174,6 +177,11 @@
            MAIN CONTENT
       ════════════════════════════════════════════ -->
       <main id="content" class="col-12 col-lg-10">
+
+        <!-- Mobile filter toggle button -->
+        <button id="filterToggle" class="btn-filter-toggle d-lg-none mb-3" onclick="toggleSidebar()">
+          <i class="bi bi-funnel"></i> Филтри
+        </button>
 
         <!-- TODO: Breadcrumb — generate from current category path -->
         <nav aria-label="breadcrumb" class="mb-3">
@@ -532,7 +540,7 @@
 <!-- Bootstrap JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Page scripts -->
-<script src="uhae-listing.js"></script>
+<script src="js/uhae-listing.js"></script>
 
 </body>
 </html>

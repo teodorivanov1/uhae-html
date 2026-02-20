@@ -21,6 +21,21 @@ function updatePriceLabel(input) {
   if (label) label.textContent = input.value + ' лв.';
 }
 
+/* ── Sidebar toggle for mobile ────────────────────────────────── */
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  sidebar.classList.toggle('show');
+  overlay.classList.toggle('show');
+  
+  // Prevent body scroll when sidebar is open
+  if (sidebar.classList.contains('show')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
 /* ── Add-to-cart button feedback ──────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn-add').forEach(btn => {

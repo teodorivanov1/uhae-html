@@ -180,6 +180,35 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 1rem;
 }
 
+.btn-outline-filters {
+  border: 1px solid var(--accent-lt);
+  color: var(--accent);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+}
+.btn-outline-filters:hover {
+  background: var(--accent-lt);
+  border-color: var(--accent);
+  color: var(--warm-dark);
+}
+
+.btn-apply-filters {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
+}
+.btn-apply-filters:hover {
+  background: var(--warm-dark);
+  border-color: var(--warm-dark);
+  color: #fff;
+}
+
 .filter-toggle {
   cursor: pointer;
   user-select: none;

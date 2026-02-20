@@ -1049,4 +1049,9 @@ footer ul li a:hover { color: var(--accent-lt); }
     padding: 0.55rem 1.2rem;
     letter-spacing: 0.12em;
   }
+  
+  /* Smaller font size for feature items on mobile */
+  .feature-item p { font-size: 0.7rem; }
+  .feature-item strong { font-size: 0.75rem; }
+  .feature-item i { font-size: 1.2rem; }
 }

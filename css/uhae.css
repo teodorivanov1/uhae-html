@@ -165,12 +165,35 @@ h1, h2, h3, h4, h5 {
   padding: 2rem 1.5rem;
 }
 
+.sidebar-section-heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
 .sidebar-heading {
   font-size: 0.68rem;
   letter-spacing: 0.25em;
-  text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1rem;
+}
+
+.filter-toggle {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+.filter-toggle:hover {
+  color: var(--warm-dark);
+}
+.filter-toggle i {
+  font-size: 0.7rem;
+  transition: transform 0.3s;
+}
+.filter-toggle[aria-expanded="false"] i {
+  transform: rotate(-90deg);
 }
 
 .sidebar-nav .nav-link {

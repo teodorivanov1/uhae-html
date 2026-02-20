@@ -38,6 +38,7 @@ function toggleSidebar() {
 
 /* ── Add-to-cart button feedback ──────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  // Add to cart button animation
   document.querySelectorAll('.btn-add').forEach(btn => {
     btn.addEventListener('click', () => {
       const original = btn.innerHTML;
@@ -50,5 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.style.color = '';
       }, 1200);
     });
+  });
+
+  // Filter toggle icon rotation for mobile
+  const filterToggles = document.querySelectorAll('.filter-toggle[data-bs-toggle="collapse"]');
+  filterToggles.forEach(toggle => {
+    const target = document.querySelector(toggle.getAttribute('data-bs-target'));
+    if (target) {
+      target.addEventListener('show.bs.collapse', () => {
+        toggle.setAttribute('aria-expanded', 'true');
+      });
+      target.addEventListener('hide.bs.collapse', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
   });
 });

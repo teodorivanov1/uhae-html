@@ -108,7 +108,7 @@
              Generate from product category API/DB.
              Data shape: [{ id, icon, label, slug, isActive }]
              Active item receives class="nav-link active" -->
-        <p class="sidebar-heading">Категории</p>
+        <p class="sidebar-section-heading">Категории</p>
         <nav class="sidebar-nav nav flex-column">
           <a class="nav-link active" href="#"><i class="bi bi-grid-3x3-gap"></i> Всички продукти</a>
           <a class="nav-link" href="#"><i class="bi bi-flower1"></i> Кремове</a>
@@ -122,52 +122,43 @@
 
         <hr class="sidebar-divider"/>
 
-        <!-- TODO: Left menu — Skin type filter
-             Generate from product attribute taxonomy -->
-        <p class="sidebar-heading">Тип кожа</p>
-        <nav class="sidebar-nav nav flex-column">
-          <a class="nav-link" href="#">Суха</a>
-          <a class="nav-link" href="#">Мазна</a>
-          <a class="nav-link" href="#">Смесена</a>
-          <a class="nav-link" href="#">Чувствителна</a>
-        </nav>
-
-        <hr class="sidebar-divider"/>
+        <p class="sidebar-section-heading">Филтри</p>
 
         <!-- TODO: Price range filter
              Min/max values should come from product price range API.
              On change, call the product listing endpoint with price filters. -->
         <div class="sidebar-filter">
-          <p class="sidebar-heading mb-2">Цена</p>
-          <label class="d-flex justify-content-between">
-            <span>0 лв.</span>
-            <span id="priceVal">80 лв.</span>
-          </label>
-          <input type="range" class="form-range" min="0" max="150" value="80"
-                 oninput="updatePriceLabel(this)"/>
+          <p class="sidebar-heading mb-2 filter-toggle d-lg-none" data-bs-toggle="collapse" data-bs-target="#priceFilter" aria-expanded="true">
+            цена <i class="bi bi-chevron-down float-end"></i>
+          </p>
+          <p class="sidebar-heading mb-2 d-none d-lg-block">цена</p>
+          <div id="priceFilter" class="collapse show">
+            <label class="d-flex justify-content-between">
+              <span>0 лв.</span>
+              <span id="priceVal">80 лв.</span>
+            </label>
+            <input type="range" class="form-range" min="0" max="150" value="80"
+                   oninput="updatePriceLabel(this)"/>
+          </div>
         </div>
 
         <hr class="sidebar-divider"/>
 
         <!-- TODO: Scent / tag filter
-             Generate checkboxes from product tag/attribute API.
+             Generate options from product tag/attribute API.
              On change, filter the product grid. -->
-        <p class="sidebar-heading">Аромат</p>
-        <div class="form-check mb-1">
-          <input class="form-check-input" type="checkbox" id="scentLavender" checked/>
-          <label class="form-check-label" style="font-size:.82rem" for="scentLavender">Лавандула</label>
-        </div>
-        <div class="form-check mb-1">
-          <input class="form-check-input" type="checkbox" id="scentRose"/>
-          <label class="form-check-label" style="font-size:.82rem" for="scentRose">Роза</label>
-        </div>
-        <div class="form-check mb-1">
-          <input class="form-check-input" type="checkbox" id="scentVanilla"/>
-          <label class="form-check-label" style="font-size:.82rem" for="scentVanilla">Ванилия</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="scentCalendula"/>
-          <label class="form-check-label" style="font-size:.82rem" for="scentCalendula">Невен</label>
+        <p class="sidebar-heading filter-toggle d-lg-none" data-bs-toggle="collapse" data-bs-target="#scentFilter" aria-expanded="true">
+          аромат <i class="bi bi-chevron-down float-end"></i>
+        </p>
+        <p class="sidebar-heading d-none d-lg-block">аромат</p>
+        <div id="scentFilter" class="collapse show">
+          <select class="form-select form-select-sm" style="font-size:.82rem">
+            <option value="">Всички</option>
+            <option value="lavender" selected>Лавандула</option>
+            <option value="rose">Роза</option>
+            <option value="vanilla">Ванилия</option>
+            <option value="calendula">Невен</option>
+          </select>
         </div>
 
       </aside><!-- /sidebar -->
@@ -180,7 +171,7 @@
 
         <!-- Mobile filter toggle button -->
         <button id="filterToggle" class="btn-filter-toggle d-lg-none mb-3" onclick="toggleSidebar()">
-          <i class="bi bi-funnel"></i> Филтри
+          <i class="bi bi-funnel"></i> Категории
         </button>
 
         <!-- TODO: Breadcrumb — generate from current category path -->

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UHAE – Серуми за лице</title>
+
+  <!-- External libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Site stylesheet -->
+  <link rel="stylesheet" href="css/uhae.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     TOP HEADER
+══════════════════════════════════════════════════════ -->
+<header id="top-header">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between py-2">
+
+      <!-- Brand -->
+      <div>
+        <a href="index.html" class="brand-name d-block">UHAE</a>
+        <span class="brand-tagline">ръчно направена козметика</span>
+      </div>
+
+      <!-- Search bar -->
+      <div class="d-none d-md-flex flex-grow-1 mx-4" style="max-width:380px">
+        <div class="input-group input-group-sm">
+          <!-- TODO: Search — wire to product search API -->
+          <input type="text"
+                 class="form-control border-0 border-bottom rounded-0"
+                 style="background:transparent; font-size:0.82rem; letter-spacing:0.05em;"
+                 placeholder="Търси продукт…"/>
+          <button class="btn btn-link px-2" style="color:var(--warm-mid)">
+            <i class="bi bi-search" style="font-size:0.85rem"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Icons + language switcher -->
+      <div class="header-icons d-flex align-items-center">
+        <!-- TODO: Language — wire to real i18n / locale switching logic -->
+        <div class="lang-switcher d-none d-md-flex align-items-center me-2">
+          <button class="lang-btn active" onclick="setLang('bg', this)">🇧🇬 BG</button>
+          <span class="lang-sep mx-1">|</span>
+          <button class="lang-btn" onclick="setLang('en', this)">🇬🇧 EN</button>
+        </div>
+        <!-- TODO: Profile link — replace # with real auth/account URL -->
+        <a href="#" title="Профил"><i class="bi bi-person"></i></a>
+        <!-- TODO: Wishlist link — replace # with real wishlist URL -->
+        <a href="#" title="Любими"><i class="bi bi-heart"></i></a>
+        <!-- TODO: Cart link — replace # with real cart URL -->
+        <a href="#" title="Количка" class="cart-badge">
+          <i class="bi bi-bag"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════════
+     MAIN NAVIGATION
+     TODO: Nav items — generate from CMS/config; mark active page
+══════════════════════════════════════════════════════ -->
+<nav id="main-nav" class="navbar navbar-expand-lg">
+  <div class="container">
+    <button class="navbar-toggler py-1" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Начало</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Нашата история</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Козметиката ни</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Съставки</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Контакти</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE BODY — SIDEBAR + CONTENT
+══════════════════════════════════════════════════════ -->
+<div id="page-body">
+  <!-- Sidebar overlay for mobile -->
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+  
+  <div class="container-fluid px-0">
+    <div class="row g-0">
+
+
+      <!-- ════════════════════════════════════════════
+           LEFT SIDEBAR
+      ════════════════════════════════════════════ -->
+      <aside id="sidebar" class="col-12 col-lg-2">
+
+        <!-- TODO: Left menu — Categories
+             Generate from product category API/DB.
+             Data shape: [{ id, icon, label, slug, isActive }]
+             Active item receives class="nav-link active" -->
+        <p class="sidebar-section-heading">Категории</p>
+        <nav class="sidebar-nav nav flex-column">
+          <a class="nav-link" href="index.html"><i class="bi bi-grid-3x3-gap"></i> Всички продукти</a>
+          <a class="nav-link" href="uhae-creams.html"><i class="bi bi-flower1"></i> Кремове</a>
+          <a class="nav-link active" href="uhae-serums.html"><i class="bi bi-droplet-half"></i> Серуми</a>
+          <a class="nav-link" href="#"><i class="bi bi-brightness-high"></i> Почистващи</a>
+          <a class="nav-link" href="#"><i class="bi bi-moisture"></i> Сапуни</a>
+          <a class="nav-link" href="#"><i class="bi bi-fire"></i> Свещи</a>
+          <a class="nav-link" href="#"><i class="bi bi-gem"></i> Комплекти</a>
+          <a class="nav-link" href="#"><i class="bi bi-gift"></i> Подаръци</a>
+        </nav>
+
+        <hr class="sidebar-divider"/>
+
+        <button id="filtersToggle" class="btn btn-sm btn-outline-filters w-100 mb-3 d-lg-none" onclick="toggleFilters()">
+          <i class="bi bi-funnel"></i> Филтри
+        </button>
+
+        <div id="filtersSection" class="collapse d-lg-block">
+          <p class="sidebar-section-heading d-none d-lg-block">Филтри</p>
+
+          <!-- TODO: Price range filter
+               Min/max values should come from product price range API.
+               On change, call the product listing endpoint with price filters. -->
+          <div class="sidebar-filter">
+            <p class="sidebar-heading mb-2">цена</p>
+            <label class="d-flex justify-content-between">
+              <span>0 лв.</span>
+              <span id="priceVal">60 лв.</span>
+            </label>
+            <input type="range" class="form-range" min="0" max="120" value="60" id="priceRange"
+                   oninput="updatePriceLabel(this); checkFilterChanges()"/>
+          </div>
+
+          <hr class="sidebar-divider"/>
+
+          <!-- TODO: Scent / tag filter
+               Generate options from product tag/attribute API.
+               On change, filter the product grid. -->
+          <div class="sidebar-filter">
+            <p class="sidebar-heading mb-2">аромат</p>
+            <select class="form-select form-select-sm" style="font-size:.82rem" id="scentSelect" onchange="checkFilterChanges()">
+              <option value="">Всички</option>
+              <option value="lavender">Лавандула</option>
+              <option value="rose">Роза</option>
+              <option value="vanilla">Ванилия</option>
+              <option value="none">Без аромат</option>
+            </select>
+          </div>
+
+          <button id="applyFiltersBtn" class="btn btn-sm btn-apply-filters w-100 mt-3 d-none" onclick="applyFilters()">
+            Приложи
+          </button>
+        </div>
+
+      </aside><!-- /sidebar -->
+
+
+      <!-- ════════════════════════════════════════════
+           MAIN CONTENT
+      ════════════════════════════════════════════ -->
+      <main id="content" class="col-12 col-lg-10">
+
+        <!-- Mobile category toggle button -->
+        <button id="filterToggle" class="btn-filter-toggle d-lg-none mb-3" onclick="toggleSidebar()">
+          <i class="bi bi-grid-3x3-gap"></i> Категории
+        </button>
+
+        <!-- TODO: Breadcrumb — generate from current category path -->
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Начало</a></li>
+            <li class="breadcrumb-item active">Серуми</li>
+          </ol>
+        </nav>
+
+        <!-- TODO: Info banner — content from CMS for category page -->
+        <div class="info-banner mb-4">
+          <div class="info-banner-content">
+            <p class="section-subtitle mb-2">Концентрирана грижа</p>
+            <h1>Серуми<br><em>за лице</em></h1>
+            <p>
+              Серумите са най-концентрираната форма на активна грижа. Леки, бързо усвояващи се 
+              формули с висока концентрация на ценни съставки — хиалуронова киселина, витамин C, 
+              ретинол, растителни екстракти. Проникват дълбоко в кожата и действат там, където е 
+              нужно. Използвайте преди крем за максимален ефект. Подходящи за всички типове кожа 
+              и специфични нужди — от хидратация до антиейдж.
+            </p>
+          </div>
+          <div class="info-banner-image">
+            <img src="https://placehold.co/640x560/ddd5c8/6b5e52?text=Серуми" alt="Натурални серуми"/>
+          </div>
+        </div>
+
+        <!-- TODO: Features strip — content from CMS config
+             Array of: { icon (Bootstrap Icons class), title, description } -->
+        <div class="features-strip">
+          <div class="container-fluid px-3">
+            <div class="row g-3 justify-content-center">
+              <div class="col-6 col-md-4">
+                <div class="feature-item">
+                  <i class="bi bi-leaf"></i>
+                  <p><strong>100% Натурално</strong>само природни съставки</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="feature-item">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                  <p><strong>Ръчно изработено</strong>с любов и внимание</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-4">
+                <div class="feature-item">
+                  <i class="bi bi-arrow-counterclockwise"></i>
+                  <p><strong>14-дневно връщане</strong>без въпроси</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section heading + sort -->
+        <div class="d-flex align-items-end justify-content-between mb-3 flex-wrap gap-2">
+          <div>
+            <p class="section-subtitle mb-0">12 продукта</p>
+            <h2 class="section-title mb-0">Серуми</h2>
+          </div>
+          <!-- TODO: Sort select — wire change to product listing API call -->
+          <select class="form-select form-select-sm w-auto border-0 border-bottom rounded-0"
+                  style="font-size:.8rem; background:transparent; color:var(--warm-mid)">
+            <option>Подредба: Препоръчани</option>
+            <option>Цена: нарастваща</option>
+            <option>Цена: намаляваща</option>
+            <option>Нови</option>
+          </select>
+        </div>
+
+
+        <!-- ════════════════════════════════════════════
+             PRODUCT GRID — SERUMS ONLY
+        ════════════════════════════════════════════ -->
+        <div class="row g-3" id="productGrid">
+
+          <!-- [SERUM 1] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+1" alt="Хиалуронов серум"/>
+                <span class="product-badge">Хит</span>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Хиалуронов серум<br><em>с Алое Вера</em></p>
+                </a>
+                <p class="product-desc">30 мл · Всички типове</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">34 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 2] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+2" alt="Витамин C серум"/>
+                <span class="product-badge">Ново</span>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Витамин C серум<br><em>Озаряващ комплекс</em></p>
+                </a>
+                <p class="product-desc">30 мл · Тъмни петна</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">42 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 3] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+3" alt="Ретинол серум"/>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Ретинол серум<br><em>Антиейдж</em></p>
+                </a>
+                <p class="product-desc">30 мл · Зряла кожа</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">46 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 4] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+4" alt="Ниацинамид серум"/>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Ниацинамид серум<br><em>Пори &amp; Нечистотии</em></p>
+                </a>
+                <p class="product-desc">30 мл · Мазна кожа</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">38 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 5] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+5" alt="Розов серум"/>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Розов серум<br><em>Хидратация &amp; Сияние</em></p>
+                </a>
+                <p class="product-desc">30 мл · Суха кожа</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">36 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 6] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+6" alt="Пептиден серум"/>
+                <span class="product-badge">Премиум</span>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Пептиден серум<br><em>Колаген Boost</em></p>
+                </a>
+                <p class="product-desc">30 мл · Антиейдж</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">52 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 7] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+7" alt="Салицилов серум"/>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Салицилов серум<br><em>Анти-акне</em></p>
+                </a>
+                <p class="product-desc">30 мл · Проблемна кожа</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">33 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 8] -->
+          <div class="col-6 col-md-4 col-xl-3">
+            <div class="product-card h-100">
+              <a href="uhae-product.html" class="product-img-wrap d-block">
+                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+8" alt="Азелаинов серум"/>
+              </a>
+              <div class="card-body d-flex flex-column">
+                <a href="uhae-product.html" class="text-decoration-none">
+                  <p class="product-name">Азелаинов серум<br><em>Изравняване на тена</em></p>
+                </a>
+                <p class="product-desc">30 мл · Хиперпигментация</p>
+                <div class="mt-auto d-flex align-items-center justify-content-between">
+                  <span class="product-price">40 лв.</span>
+                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /productGrid -->
+
+
+        <!-- TODO: Pagination — generate from API (currentPage, totalPages) -->
+        <nav class="mt-4 mb-2" aria-label="Странициране">
+          <ul class="pagination pagination-sm justify-content-center" style="gap:4px">
+            <li class="page-item disabled">
+              <a class="page-link border-0 rounded-0"
+                 style="background:transparent; color:var(--warm-mid)">‹</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link border-0 rounded-0" href="#"
+                 style="background:var(--warm-dark); color:var(--ivory); border-color:var(--warm-dark)">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link border-0 rounded-0" href="#"
+                 style="background:transparent; color:var(--warm-mid)">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link border-0 rounded-0" href="#"
+                 style="background:transparent; color:var(--warm-mid)">›</a>
+            </li>
+          </ul>
+        </nav>
+
+      </main><!-- /content -->
+    </div>
+  </div>
+</div><!-- /page-body -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+     TODO: Footer — generate nav links from CMS/config (shared across all pages)
+══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-12 col-md-4">
+        <div class="footer-brand">UHAE</div>
+        <div class="footer-tagline mb-3">ръчно направена козметика</div>
+        <p class="footer-about">
+          Вярваме, че кожата ни заслужава само най-доброто от природата.
+          Всеки продукт е изработен с внимание и любов.
+        </p>
+        <!-- TODO: Social icons — URLs from site config -->
+        <div class="social-icons mt-3">
+          <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" title="Pinterest"><i class="bi bi-pinterest"></i></a>
+          <a href="#" title="TikTok"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- TODO: Shop links — generate from product category list -->
+      <div class="col-6 col-md-2">
+        <h6>Магазин</h6>
+        <ul>
+          <li><a href="index.html">Всички продукти</a></li>
+          <li><a href="uhae-creams.html">Кремове</a></li>
+          <li><a href="uhae-serums.html">Серуми</a></li>
+          <li><a href="#">Сапуни</a></li>
+          <li><a href="#">Свещи</a></li>
+          <li><a href="#">Комплекти</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <h6>Информация</h6>
+        <ul>
+          <li><a href="#">Нашата история</a></li>
+          <li><a href="#">Козметиката ни</a></li>
+          <li><a href="#">Съставки</a></li>
+          <li><a href="#">Блог</a></li>
+          <li><a href="#">Контакти</a></li>
+          <li><a href="#">ЧЗВ</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <h6>Помощ</h6>
+        <ul>
+          <li><a href="#">Доставка</a></li>
+          <li><a href="#">Връщане</a></li>
+          <li><a href="#">Поверителност</a></li>
+          <li><a href="#">Условия</a></li>
+        </ul>
+      </div>
+
+      <!-- TODO: Newsletter — wire form submit to email marketing API -->
+      <div class="col-6 col-md-2">
+        <h6>Абонамент</h6>
+        <p class="footer-newsletter-note">Получавай новини и специални оферти.</p>
+        <div class="input-group input-group-sm mt-2">
+          <input type="email"
+                 class="form-control rounded-0 border-0 footer-newsletter-input"
+                 placeholder="имейл…"/>
+          <button class="btn btn-sm rounded-0 footer-newsletter-btn">→</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span>&copy; 2025 UHAE. Всички права запазени.</span>
+      <div class="lang-switcher d-flex align-items-center">
+        <button class="lang-btn active" onclick="setLang('bg', this)">🇧🇬 BG</button>
+        <span class="lang-sep mx-1">|</span>
+        <button class="lang-btn" onclick="setLang('en', this)">🇬🇧 EN</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Page scripts -->
+<script src="js/uhae-listing.js"></script>
+
+</body>
+</html>

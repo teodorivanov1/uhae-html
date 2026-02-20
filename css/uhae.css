@@ -235,6 +235,7 @@ h1, h2, h3, h4, h5 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
 }
 .sidebar-nav .nav-link i { font-size: 0.8rem; color: var(--accent-lt); }
 .sidebar-nav .nav-link:hover {
@@ -245,6 +246,19 @@ h1, h2, h3, h4, h5 {
 .sidebar-nav .nav-link.active {
   color: var(--accent);
   font-weight: 500;
+  padding-left: 0.5rem;
+}
+.sidebar-nav .nav-link.active::before {
+  content: '◂';
+  position: absolute;
+  right: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+  animation: pulse-arrow 1.5s ease-in-out infinite;
+}
+@keyframes pulse-arrow {
+  0%, 100% { opacity: 0.6; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(-3px); }
 }
 
 .sidebar-divider {
@@ -298,6 +312,82 @@ h1, h2, h3, h4, h5 {
   color: var(--warm-mid);
   max-width: 420px;
   margin-bottom: 1.5rem;
+}
+
+
+/* ════════════════════════════════
+   INFO BANNER (category pages)
+════════════════════════════════ */
+.info-banner {
+  background: var(--ivory-mid);
+  border: 1px solid var(--ivory-dark);
+  padding: 3rem 2.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.info-banner-content {
+  flex: 1;
+  max-width: 520px;
+}
+.info-banner-content .section-subtitle {
+  margin-bottom: 0.5rem;
+}
+.info-banner-content h1 {
+  font-size: 3rem;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+.info-banner-content p {
+  color: var(--warm-mid);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+.info-banner-image {
+  flex: 0 0 320px;
+  height: 280px;
+  background: var(--ivory-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.info-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.info-banner-image::before {
+  content: 'СНИМКА';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--warm-mid);
+  opacity: 0.4;
+}
+@media (max-width: 991px) {
+  .info-banner {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+  .info-banner-content {
+    max-width: 100%;
+  }
+  .info-banner-content h1 {
+    font-size: 2.2rem;
+  }
+  .info-banner-image {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 220px;
+  }
 }
 
 

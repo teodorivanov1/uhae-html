@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UHAE – Кремове за лице и тяло</title>
+  <title>UHAE – Серуми за лице</title>
 
   <!-- External libraries -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -103,7 +103,7 @@
         <p class="sidebar-section-heading">Категории</p>
         <nav class="sidebar-nav nav flex-column">
           <a class="nav-link" href="index.html"><i class="bi bi-grid-3x3-gap"></i> Всички продукти</a>
-          <a class="nav-link active" href="uhae-creams.html"><i class="bi bi-flower1"></i> Козметика</a>
+          <a class="nav-link active" href="uhae-kozmetika.html"><i class="bi bi-flower1"></i> Козметика</a>
           <a class="nav-link" href="#"><i class="bi bi-moisture"></i> Сапуни</a>
           <a class="nav-link" href="#"><i class="bi bi-fire"></i> Свещи</a>
           <a class="nav-link" href="#"><i class="bi bi-gem"></i> Комплекти</a>
@@ -126,9 +126,9 @@
             <p class="sidebar-heading mb-2">цена</p>
             <label class="d-flex justify-content-between">
               <span>0 лв.</span>
-              <span id="priceVal">50 лв.</span>
+              <span id="priceVal">60 лв.</span>
             </label>
-            <input type="range" class="form-range" min="0" max="100" value="50" id="priceRange"
+            <input type="range" class="form-range" min="0" max="120" value="60" id="priceRange"
                    oninput="updatePriceLabel(this); checkFilterChanges()"/>
           </div>
 
@@ -146,7 +146,7 @@
               <option value="lavender">Лавандула</option>
               <option value="rose">Роза</option>
               <option value="vanilla">Ванилия</option>
-              <option value="calendula">Невен</option>
+              <option value="none">Без аромат</option>
             </select>
           </div>
 
@@ -172,25 +172,25 @@
         <nav aria-label="breadcrumb" class="mb-3">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Начало</a></li>
-            <li class="breadcrumb-item active">Кремове</li>
+            <li class="breadcrumb-item active">Серуми</li>
           </ol>
         </nav>
 
         <!-- TODO: Info banner — content from CMS for category page -->
         <div class="info-banner mb-4">
           <div class="info-banner-content">
-            <p class="section-subtitle mb-2">Нежна грижа за всеки ден</p>
-            <h1>Кремове<br><em>за лице и тяло</em></h1>
+            <p class="section-subtitle mb-2">Концентрирана грижа</p>
+            <h1>Серуми<br><em>за лице</em></h1>
             <p>
-              Нашите кремове са създадени с мисъл за хармония между природата и кожата. 
-              Богати на натурални масла и екстракти, те хидратират дълбоко, възстановяват 
-              и подхранват. Всяка формула е балансирана за конкретен тип кожа — от суха и 
-              чувствителна до комбинирана и зряла. Изработени на ръка в малки партиди за 
-              максимална свежест и ефективност.
+              Серумите са най-концентрираната форма на активна грижа. Леки, бързо усвояващи се 
+              формули с висока концентрация на ценни съставки — хиалуронова киселина, витамин C, 
+              ретинол, растителни екстракти. Проникват дълбоко в кожата и действат там, където е 
+              нужно. Използвайте преди крем за максимален ефект. Подходящи за всички типове кожа 
+              и специфични нужди — от хидратация до антиейдж.
             </p>
           </div>
           <div class="info-banner-image">
-            <img src="https://placehold.co/640x560/ede8df/a07850?text=Кремове" alt="Натурални кремове"/>
+            <img src="https://placehold.co/640x560/ddd5c8/6b5e52?text=Серуми" alt="Натурални серуми"/>
           </div>
         </div>
 
@@ -224,8 +224,8 @@
         <!-- Section heading + sort -->
         <div class="d-flex align-items-end justify-content-between mb-3 flex-wrap gap-2">
           <div>
-            <p class="section-subtitle mb-0">16 продукта</p>
-            <h2 class="section-title mb-0">Кремове</h2>
+            <p class="section-subtitle mb-0">12 продукта</p>
+            <h2 class="section-title mb-0">Серуми</h2>
           </div>
           <!-- TODO: Sort select — wire change to product listing API call -->
           <select class="form-select form-select-sm w-auto border-0 border-bottom rounded-0"
@@ -239,197 +239,197 @@
 
 
         <!-- ════════════════════════════════════════════
-             PRODUCT GRID — CREAMS ONLY
+             PRODUCT GRID — SERUMS ONLY
         ════════════════════════════════════════════ -->
         <div class="row g-5" id="productGrid">
 
-          <!-- [CREAM 1] -->
+          <!-- [SERUM 1] -->
           <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
               <div class="product-img-container">
                 <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+1" alt="Дневен крем"/>
-                  <span class="product-badge">Ново</span>
-                </a>
-              </div>
-              <div class="product-content d-flex">
-                <div class="product-title-wrapper">
-                  <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Дневен крем</p>
-                  </a>
-                </div>
-                <div class="product-desc-wrapper">
-                  <p class="product-desc">Богат на витамини крем за интензивна хидратация на сухата кожа</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- [CREAM 2] -->
-          <div class="col-6 col-md-4 col-xl-4">
-            <div class="product-card h-100">
-              <div class="product-img-container">
-                <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+2" alt="Нощен крем"/>
-                </a>
-              </div>
-              <div class="product-content d-flex">
-                <div class="product-title-wrapper">
-                  <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Нощен крем</p>
-                  </a>
-                </div>
-                <div class="product-desc-wrapper">
-                  <p class="product-desc">Дълбоко хидратираща формула за нощна регенерация на кожата</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- [CREAM 3] -->
-          <div class="col-6 col-md-4 col-xl-4">
-            <div class="product-card h-100">
-              <div class="product-img-container">
-                <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+3" alt="Антиейдж крем"/>
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+1" alt="Хиалуронов серум"/>
                   <span class="product-badge">Хит</span>
                 </a>
               </div>
               <div class="product-content d-flex">
                 <div class="product-title-wrapper">
                   <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Антиейдж крем</p>
+                    <p class="product-name">Хиалуронов серум</p>
                   </a>
                 </div>
                 <div class="product-desc-wrapper">
-                  <p class="product-desc">Мощна антиейдъв формула за намаляване на бръчките и подмладяване</p>
+                  <p class="product-desc">Дълбока хидратация и подмладяване за всички типове кожа</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- [CREAM 4] -->
+          <!-- [SERUM 2] -->
           <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
               <div class="product-img-container">
                 <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+4" alt="Хидратиращ крем"/>
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+2" alt="Витамин C серум"/>
+                  <span class="product-badge">Ново</span>
                 </a>
               </div>
               <div class="product-content d-flex">
                 <div class="product-title-wrapper">
                   <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Хидратиращ крем</p>
+                    <p class="product-name">Витамин C серум</p>
                   </a>
                 </div>
                 <div class="product-desc-wrapper">
-                  <p class="product-desc">Лека хидратираща текстура за смесена и мазна кожа</p>
+                  <p class="product-desc">Озарява тена и намалява тъмните петна с антиоксидантен ефект</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- [CREAM 5] -->
+          <!-- [SERUM 3] -->
           <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
               <div class="product-img-container">
                 <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+5" alt="Крем за ръце"/>
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+3" alt="Ретинол серум"/>
                 </a>
               </div>
               <div class="product-content d-flex">
                 <div class="product-title-wrapper">
                   <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Крем за ръце</p>
+                    <p class="product-name">Ретинол серум</p>
                   </a>
                 </div>
                 <div class="product-desc-wrapper">
-                  <p class="product-desc">Бързо впиваща се формула за меки и гладки ръце</p>
+                  <p class="product-desc">Мощен антиейдъв серум за изглаждане на бръчките</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- [CREAM 6] -->
+          <!-- [SERUM 4] -->
           <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
               <div class="product-img-container">
                 <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+6" alt="Крем за тяло"/>
-                  <span class="product-badge">-10%</span>
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+4" alt="Ниацинамид серум"/>
                 </a>
               </div>
               <div class="product-content d-flex">
                 <div class="product-title-wrapper">
                   <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Крем за тяло</p>
+                    <p class="product-name">Ниацинамид серум</p>
                   </a>
                 </div>
                 <div class="product-desc-wrapper">
-                  <p class="product-desc">Подхранващ боди крем с екзотичен аромат за мека кожа</p>
+                  <p class="product-desc">Намалява разширените пори и контролира мазността</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- [CREAM 7] -->
+          <!-- [SERUM 5] -->
           <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
               <div class="product-img-container">
                 <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+7" alt="BB крем"/>
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+5" alt="Розов серум"/>
                 </a>
               </div>
               <div class="product-content d-flex">
                 <div class="product-title-wrapper">
                   <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">BB крем</p>
+                    <p class="product-name">Розов серум</p>
                   </a>
                 </div>
                 <div class="product-desc-wrapper">
-                  <p class="product-desc">Тониращ крем с UV защита за перфектен тен и хидратация</p>
+                  <p class="product-desc">Интензивно хидратира сухата кожа с розово масло</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- [CREAM 8] -->
+          <!-- [SERUM 6] -->
           <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
               <div class="product-img-container">
                 <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+8" alt="Крем за очи"/>
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+6" alt="Пептиден серум"/>
+                  <span class="product-badge">Премиум</span>
                 </a>
               </div>
               <div class="product-content d-flex">
                 <div class="product-title-wrapper">
                   <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Крем за очи</p>
+                    <p class="product-name">Пептиден серум</p>
                   </a>
                 </div>
                 <div class="product-desc-wrapper">
-                  <p class="product-desc">Намалява подочните торбички и тъмни кръгове</p>
+                  <p class="product-desc">Стимулира производството на колаген за плътна и еластична кожа</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- [CREAM 9] -->
+          <!-- [SERUM 7] -->
           <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
               <div class="product-img-container">
                 <a href="uhae-product.html" class="product-img-wrap d-block">
-                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем+9" alt="Регенериращ крем"/>
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+7" alt="Салицилов серум"/>
                 </a>
               </div>
               <div class="product-content d-flex">
                 <div class="product-title-wrapper">
                   <a href="uhae-product.html" class="text-decoration-none">
-                    <p class="product-name">Регенериращ крем</p>
+                    <p class="product-name">Салицилов серум</p>
                   </a>
                 </div>
                 <div class="product-desc-wrapper">
-                  <p class="product-desc">Подпомага регенерацията на кожата и намалява белезите</p>
+                  <p class="product-desc">Почиства порите и намалява акнето за проблемна кожа</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 8] -->
+          <div class="col-6 col-md-4 col-xl-4">
+            <div class="product-card h-100">
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+8" alt="Азелаинов серум"/>
+                </a>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Азелаинов серум</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Намалява хиперпигментацията и изравнява тена на кожата</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [SERUM 9] -->
+          <div class="col-6 col-md-4 col-xl-4">
+            <div class="product-card h-100">
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум+9" alt="Ферментен серум"/>
+                </a>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Ферментен серум</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Нежно ексфолира с папая и ананас ензими за гладка кожа</p>
                 </div>
               </div>
             </div>
@@ -495,7 +495,7 @@
         <h6>Магазин</h6>
         <ul>
           <li><a href="index.html">Всички продукти</a></li>
-          <li><a href="uhae-creams.html">Козметика</a></li>
+          <li><a href="uhae-kozmetika.html">Козметика</a></li>
           <li><a href="#">Сапуни</a></li>
           <li><a href="#">Свещи</a></li>
           <li><a href="#">Комплекти</a></li>

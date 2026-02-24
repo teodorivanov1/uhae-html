@@ -103,13 +103,11 @@
         <p class="sidebar-section-heading">Категории</p>
         <nav class="sidebar-nav nav flex-column">
           <a class="nav-link active" href="index.html"><i class="bi bi-grid-3x3-gap"></i> Всички продукти</a>
-          <a class="nav-link" href="uhae-creams.html"><i class="bi bi-flower1"></i> Кремове</a>
-          <a class="nav-link" href="uhae-serums.html"><i class="bi bi-droplet-half"></i> Серуми</a>
-          <a class="nav-link" href="#"><i class="bi bi-brightness-high"></i> Почистващи</a>
+          <a class="nav-link" href="uhae-kozmetika.html"><i class="bi bi-flower1"></i> Козметика</a>
           <a class="nav-link" href="#"><i class="bi bi-moisture"></i> Сапуни</a>
           <a class="nav-link" href="#"><i class="bi bi-fire"></i> Свещи</a>
           <a class="nav-link" href="#"><i class="bi bi-gem"></i> Комплекти</a>
-          <a class="nav-link" href="#"><i class="bi bi-gift"></i> Подаръци</a>
+          <a class="nav-link" href="#"><i class="bi bi-gift"></i> Празнични</a>
         </nav>
 
         <hr class="sidebar-divider"/>
@@ -247,162 +245,198 @@
              }
              Repeat the .col-6 block for each product in the API response.
         ════════════════════════════════════════════ -->
-        <div class="row g-3" id="productGrid">
+        <div class="row g-5" id="productGrid">
 
           <!-- [EXAMPLE PRODUCT 1] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <!-- TODO: Image src/alt from product.image -->
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем" alt="Крем за лице"/>
-                <!-- TODO: Badge — render only when product.badge is set -->
-                <span class="product-badge">Ново</span>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <!-- TODO: href from product.url -->
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Дневен крем<br><em>Роза &amp; Невен</em></p>
+              <div class="product-img-container">
+                <!-- TODO: Image src/alt from product.image -->
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Крем" alt="Крем за лице"/>
+                  <!-- TODO: Badge — render only when product.badge is set -->
+                  <span class="product-badge">Ново</span>
                 </a>
-                <p class="product-desc">50 мл · Суха кожа</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <!-- TODO: price / oldPrice from product data -->
-                  <span class="product-price">22 лв.</span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <!-- TODO: href from product.url -->
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Дневен крем</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Богат на витамини крем за интензивна хидратация на сухата кожа</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- [EXAMPLE PRODUCT 2] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Свещ" alt="Ароматна свещ"/>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Соева свещ<br><em>Ванилия &amp; Сандалово дърво</em></p>
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Свещ" alt="Ароматна свещ"/>
                 </a>
-                <p class="product-desc">200 гр · ~40 часа</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <span class="product-price">28 лв.</span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Соева свещ</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Създайте топла атмосфера с нежния и успокояващ аромат</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- [EXAMPLE PRODUCT 3 — with discount badge] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Сапун" alt="Натурален сапун"/>
-                <span class="product-badge">-15%</span>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Козе мляко<br><em>Лавандула &amp; Овес</em></p>
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Сапун" alt="Натурален сапун"/>
+                  <span class="product-badge">-15%</span>
                 </a>
-                <p class="product-desc">100 гр · Чувствителна кожа</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <span class="product-price">9 лв. <del>11 лв.</del></span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Козе мляко</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Нежен сапун за чувствителна кожа с успокояващо действие</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- [EXAMPLE PRODUCT 4] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум" alt="Серум"/>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Хиалуронов серум<br><em>с Алое Вера</em></p>
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Серум" alt="Серум"/>
                 </a>
-                <p class="product-desc">30 мл · Всички типове</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <span class="product-price">34 лв.</span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Хиалуронов серум</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Дълбока хидратация и подмладяване за всички типове кожа</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- [EXAMPLE PRODUCT 5] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Масло" alt="Масло за тяло"/>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Масло за тяло<br><em>Арган &amp; Жожоба</em></p>
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Масло" alt="Масло за тяло"/>
                 </a>
-                <p class="product-desc">100 мл · Всички типове</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <span class="product-price">19 лв.</span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Масло за тяло</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Луксозна грижа за мека и еластична кожа на тялото</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- [EXAMPLE PRODUCT 6] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Комплект" alt="Подаръчен комплект"/>
-                <span class="product-badge">Хит</span>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Подаръчен комплект<br><em>Роза &amp; Лавандула</em></p>
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Комплект" alt="Подаръчен комплект"/>
+                  <span class="product-badge">Хит</span>
                 </a>
-                <p class="product-desc">4 продукта · Лимитиран</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <span class="product-price">65 лв.</span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Подаръчен комплект</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Перфектният подарък за любима личност - пълна грижа</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- [EXAMPLE PRODUCT 7] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Тоник" alt="Тоник за лице"/>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Розова вода<br><em>Тоник за лице</em></p>
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Тоник" alt="Тоник за лице"/>
                 </a>
-                <p class="product-desc">100 мл · Смесена кожа</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <span class="product-price">15 лв.</span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Розова вода</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Освежава и тонизира кожата, подготвя я за грижа</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- [EXAMPLE PRODUCT 8] -->
-          <div class="col-6 col-md-4 col-xl-3">
+          <div class="col-6 col-md-4 col-xl-4">
             <div class="product-card h-100">
-              <a href="uhae-product.html" class="product-img-wrap d-block">
-                <img src="https://placehold.co/400x400/ede8df/a07850?text=Скраб" alt="Скраб за тяло"/>
-              </a>
-              <div class="card-body d-flex flex-column">
-                <a href="uhae-product.html" class="text-decoration-none">
-                  <p class="product-name">Захарен скраб<br><em>Кокос &amp; Ванилия</em></p>
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Скраб" alt="Скраб за тяло"/>
                 </a>
-                <p class="product-desc">200 гр · Тяло</p>
-                <div class="mt-auto d-flex align-items-center justify-content-between">
-                  <span class="product-price">18 лв.</span>
-                  <button class="btn-add"><i class="bi bi-bag-plus"></i></button>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Захарен скраб</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Нежно ексфолира и подхранва кожата с екзотичен аромат</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- [EXAMPLE PRODUCT 9] -->
+          <div class="col-6 col-md-4 col-xl-4">
+            <div class="product-card h-100">
+              <div class="product-img-container">
+                <a href="uhae-product.html" class="product-img-wrap d-block">
+                  <img src="https://placehold.co/400x400/ede8df/a07850?text=Балсам" alt="Балсам за устни"/>
+                </a>
+              </div>
+              <div class="product-content d-flex">
+                <div class="product-title-wrapper">
+                  <a href="uhae-product.html" class="text-decoration-none">
+                    <p class="product-name">Балсам за устни</p>
+                  </a>
+                </div>
+                <div class="product-desc-wrapper">
+                  <p class="product-desc">Интензивна грижа и защита за напукани устни</p>
                 </div>
               </div>
             </div>
@@ -472,11 +506,11 @@
         <h6>Магазин</h6>
         <ul>
           <li><a href="index.html">Всички продукти</a></li>
-          <li><a href="uhae-creams.html">Кремове</a></li>
-          <li><a href="uhae-serums.html">Серуми</a></li>
+          <li><a href="uhae-kozmetika.html">Козметика</a></li>
           <li><a href="#">Сапуни</a></li>
           <li><a href="#">Свещи</a></li>
           <li><a href="#">Комплекти</a></li>
+          <li><a href="#">Празнични</a></li>
         </ul>
       </div>
 

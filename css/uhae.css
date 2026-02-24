@@ -1047,12 +1047,15 @@ footer ul li a:hover { color: var(--accent-lt); }
   }
   
   /* Mobile product cards: smaller spacing, hide descriptions, 2 per row */
-  #productGrid {
-    gap: 0.75rem !important;
+  /* Reduce gap on mobile for tighter layout */
+  #productGrid.g-3 {
+    --bs-gutter-x: 0.75rem;
+    --bs-gutter-y: 0.75rem;
   }
   
-  /* Force 2 products per row on mobile */
-  #productGrid > [class*="col-"] {
+  /* Ensure col-6 columns are exactly 50% on mobile */
+  #productGrid .col-6 {
+    width: 50% !important;
     flex: 0 0 50% !important;
     max-width: 50% !important;
   }
@@ -1062,7 +1065,11 @@ footer ul li a:hover { color: var(--accent-lt); }
     display: none !important;
   }
   .product-content {
-    padding: 0.65rem;
+    padding: 0.5rem;
+  }
+  
+  .product-name {
+    font-size: 0.9rem;
   }
   
   /* Related products on product detail page */
@@ -1089,4 +1096,20 @@ footer ul li a:hover { color: var(--accent-lt); }
   .feature-item p { font-size: 0.7rem; }
   .feature-item strong { font-size: 0.75rem; }
   .feature-item i { font-size: 1.2rem; }
+  
+  /* Even smaller padding for very small screens */
+  .product-content {
+    padding: 0.4rem;
+  }
+  
+  .product-name {
+    font-size: 0.85rem;
+  }
+  
+  /* Ensure 2 columns even on very small screens */
+  #productGrid .col-6 {
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
 }

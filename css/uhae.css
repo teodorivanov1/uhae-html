@@ -1045,6 +1045,33 @@ footer ul li a:hover { color: var(--accent-lt); }
     padding: 0.6rem 1.4rem;
     letter-spacing: 0.14em;
   }
+  
+  /* Mobile product cards: smaller spacing, hide descriptions, 2 per row */
+  #productGrid {
+    gap: 0.75rem !important;
+  }
+  
+  /* Force 2 products per row on mobile */
+  #productGrid > [class*="col-"] {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+  
+  .product-desc-wrapper,
+  .product-desc {
+    display: none !important;
+  }
+  .product-content {
+    padding: 0.65rem;
+  }
+  
+  /* Related products on product detail page */
+  .product-card .card-body {
+    padding: 0.65rem;
+  }
+  .product-card .card-body .product-desc {
+    display: none !important;
+  }
 }
 
 @media (max-width: 575.98px) {

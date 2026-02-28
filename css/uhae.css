@@ -570,18 +570,6 @@ h1, h2, h3, h4, h5 {
 }
 .btn-cart:hover { background: var(--accent); border-color: var(--accent); }
 
-/* Wishlist icon button */
-.btn-wishlist {
-  background: transparent;
-  border: 1px solid var(--ivory-dark);
-  color: var(--warm-mid);
-  padding: 0.7rem 0.9rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.btn-wishlist:hover { border-color: var(--accent); color: var(--accent); }
-
 
 /* ════════════════════════════════
    PRODUCT DETAIL — GALLERY
@@ -726,21 +714,6 @@ h1, h2, h3, h4, h5 {
   color: var(--warm-dark);
 }
 .qty-control input:focus { outline: none; }
-
-/* Info pills */
-.info-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.info-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: var(--warm-mid);
-  background: var(--ivory-mid);
-  border: 1px solid var(--ivory-dark);
-  padding: 0.3rem 0.75rem;
-}
-.info-pill i { color: var(--accent); }
 
 
 /* ════════════════════════════════

@@ -63,19 +63,3 @@ function addToCart(btn) {
   }, 1500);
   // TODO: hook into real cart / e-commerce API here
 }
-
-/* ── Wishlist toggle ──────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  const wishlistBtn = document.querySelector('.btn-wishlist');
-  if (wishlistBtn) {
-    wishlistBtn.addEventListener('click', function () {
-      const icon = this.querySelector('i');
-      icon.classList.toggle('bi-heart');
-      icon.classList.toggle('bi-heart-fill');
-      const isActive = icon.classList.contains('bi-heart-fill');
-      this.style.borderColor = isActive ? 'var(--accent)' : '';
-      this.style.color       = isActive ? 'var(--accent)' : '';
-      // TODO: persist wishlist state (localStorage / API)
-    });
-  }
-});

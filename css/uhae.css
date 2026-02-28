@@ -465,7 +465,7 @@ h1, h2, h3, h4, h5 {
 
 .product-img-wrap {
   background: var(--ivory-mid);
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   position: relative;
   display: block;
@@ -595,7 +595,7 @@ h1, h2, h3, h4, h5 {
 
 .img-main {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   background: var(--ivory-mid);
   border: 1px solid var(--ivory-dark);
@@ -612,7 +612,7 @@ h1, h2, h3, h4, h5 {
 }
 .thumb-item {
   flex: 1;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border: 1px solid var(--ivory-dark);
   cursor: pointer;
@@ -1113,3 +1113,4 @@ footer ul li a:hover { color: var(--accent-lt); }
     max-width: 50% !important;
   }
 }
+ 
